@@ -13,7 +13,6 @@ end
 
 gem 'devise'
 
-gem 'bootstrap'
 
 gem 'bootstrap-sass'
 

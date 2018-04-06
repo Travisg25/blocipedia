@@ -7,17 +7,28 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'random_data'
+require 'faker'
 
 10.times do
+  User.create!(
+    email: Faker::Internet.email,
+    password: 'password',
+    confirmed_at: Time.now
+  )
+end
+users = User.all
 
-  Wiki.create!(
-
-    title:  RandomData.random_sentence,
-    body:   RandomData.random_paragraph
+20.times do
+  wiki = Wiki.create!(
+    user: users.sample,
+    title: Faker::Seinfeld.character,
+    body: Faker::Seinfeld.quote
   )
 end
 wikis = Wiki.all
 
 
+
 puts "Seed finished"
-puts "#{Wiki.count} posts created"
+puts "#{Wiki.count} wikis created"
+puts "#{User.count} users created"

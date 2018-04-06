@@ -13,7 +13,7 @@ end
 
 gem 'devise'
 
-
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master' 
 gem 'bootstrap-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

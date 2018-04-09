@@ -15,11 +15,11 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    user.standard?
   end
 
   def new?
-    create?
+    user.standard?
   end
 
   def update?
@@ -27,11 +27,11 @@ class ApplicationPolicy
   end
 
   def edit?
-    update?
+    user.standard?
   end
 
   def destroy?
-    false
+    user.admin?
   end
 
   def scope

@@ -43,6 +43,7 @@
 
 <% if current_user.premium? %>
   <h3>Downgrade to Standard</h3>
+  <p> Downgrading will result in all private wikis becoming public </p>
   <%= link_to "Downgrade", downgrade_path(@user), class: 'btn btn-info' %>
 <% end %>
 

@@ -1,0 +1,10 @@
+<% if @wiki.private? && policy(@wiki).destroy?  %>
+
+  <%= form_for [wiki, Collaborator.new] do |f| %>
+    Add Collaborators using their Email
+     <%= f.label :user %>
+     <%= f.text_field :user, placeholder: "User's Email" %>
+
+     <%= f.submit "Save", class: 'btn btn-success' %>
+  <% end %>
+<% end %>

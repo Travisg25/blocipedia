@@ -3,11 +3,13 @@ class WikisController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    @users = User.find_by(id: session[:user_id])
+    @collaborators = @wiki.collaborators
   end
 
   def new
@@ -42,6 +44,8 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.where.not(id: current_user.id)
+    @collaborators = @wiki.collaborators
   end
 
   def destroy

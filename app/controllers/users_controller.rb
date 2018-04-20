@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       current_user.update_attribute(:role, 'standard')
       wikis.each do |wiki|
         if wiki.user.id == current_user.id
-          wikis.update_all(public: true)
+          update_all(private: false)
         end
       end
       flash[:notice] = "Your account has been downgraded. You are now a Standard member."
